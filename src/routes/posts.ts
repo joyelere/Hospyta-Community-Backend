@@ -12,11 +12,11 @@ router.get("/", PostsController.getPosts);
 
 router.get("/:postId", PostsController.getPost);
 
-router.post("/", PostsController.createPosts);
+router.post("/", requiresAuth,PostsController.createPosts);
 
 router.patch("/:postId", PostsController.updatePost);
 
-router.delete("/:postId", requiresAuth, PostsController.deletePost);
+router.delete("/:postId", PostsController.deletePost);
 
 // Get posts by category
 router.get("/category/:category", PostsController.getPostsByCategory);

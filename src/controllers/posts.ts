@@ -116,10 +116,10 @@ export const updatePost: RequestHandler<
 > = async (req, res, next) => {
   const { postId } = req.params;
   const { image, content, category } = req.body;
-  //   const authenticatedUserId = req.session.userId;
+  const authenticatedUserId = req.session.userId;
 
   try {
-    // assertIsDefined(authenticatedUserId);
+    assertIsDefined(authenticatedUserId);
 
     if (!mongoose.Types.ObjectId.isValid(postId)) {
       throw createHttpError(400, "Invalid post ID");
@@ -131,13 +131,13 @@ export const updatePost: RequestHandler<
       throw createHttpError(404, "Post not found");
     }
 
-    // if (!post.user.equals(authenticatedUserId)) {
-    //   throw createHttpError(401, "You cannot access this post");
-    // }
+    if (!post.user.equals(authenticatedUserId)) {
+      throw createHttpError(401, "You cannot access this post");
+    }
 
-    if (image) post.image = image;
-    if (content) post.content = content;
-    if (category) post.category = category;
+    if (image !== undefined) post.image = image;
+    if (content !== undefined) post.content = content;
+    if (category !== undefined) post.category = category;
 
     const updatedPost = await post.save();
     res.status(200).json(updatedPost);
@@ -148,8 +148,12 @@ export const updatePost: RequestHandler<
 
 export const deletePost: RequestHandler = async (req, res, next) => {
   const { postId } = req.params;
+  const authenticatedUserId = req.session.userId;
+
 
   try {
+    assertIsDefined(authenticatedUserId);
+
     if (!mongoose.Types.ObjectId.isValid(postId)) {
       throw createHttpError(400, "Invalid post ID");
     }
@@ -159,6 +163,10 @@ export const deletePost: RequestHandler = async (req, res, next) => {
     if (!post) {
       throw createHttpError(404, "Post not found");
     }
+
+    if (!post.user.equals(authenticatedUserId)) {
+        throw createHttpError(401, "You cannot access this post");
+      }
 
     await post.deleteOne();
 
