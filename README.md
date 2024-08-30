@@ -1,8 +1,7 @@
-# MegaExeTest
-
+# Hospyta Community Backend
 ## Overview
 
-MegaExeTest is a Node.js project built with TypeScript and Express.js, featuring session-based user authentication, and various functionalities for managing users, posts, and comments. The project also includes endpoints for upvoting and downvoting posts, viewing posts sorted by different criteria, and handling comments and replies.
+Hospyta Community Backend is a Node.js project built with TypeScript and Express.js, featuring session-based user authentication, and various functionalities for managing users, posts, and comments. The project also includes endpoints for upvoting and downvoting posts, viewing posts sorted by different criteria, and handling comments and replies.
 
 ## Features
 
@@ -63,4 +62,4 @@ MegaExeTest is a Node.js project built with TypeScript and Express.js, featuring
 
 ### Conclusion
 
-Throughout the development of MegaExeTest, careful attention was given to maintaining code quality, handling errors gracefully, and ensuring type safety with TypeScript. By overcoming various challenges, including type mismatches and session management, a robust and scalable application was built. This project demonstrates the effective use of modern web development practices and tools, setting a strong foundation for future enhancements and features.
+Throughout the development of Hospyta Community Backend, careful attention was given to maintaining code quality, handling errors gracefully, and ensuring type safety with TypeScript. By overcoming various challenges, including type mismatches and session management, a robust and scalable application was built. This project demonstrates the effective use of modern web development practices and tools, setting a strong foundation for future enhancements and features.
